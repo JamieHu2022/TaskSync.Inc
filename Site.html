@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskSync - Smart Planner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .corner-button {
+      position: absolute;
+      top: 15px;
+      padding: 10px 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .corner-button:hover {
+      background-color: #0056b3;
+    }
+
+    #leftButton {
+      left: 15px;
+    }
+
+    #rightButton {
+      right: 100px;
+    }
+
+    #signupButton {
+      right: 15px;
+      background-color: #28a745;
+    }
+
+    #signupButton:hover {
+      background-color: #1e7e34;
+    }
+
+    .pricing-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .pricing-card {
+      background-color: #ffffff;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 25px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .pricing-card h3 {
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+
+    .pricing-card p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .pricing-card strong {
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background-color: #eaeaea;
+      color: #555;
+    }
+
+    /* Floating Circle Icon */
+    .floating-icon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #0078d7;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .floating-icon img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .floating-icon:hover {
+      transform: scale(1.1);
+      transition: 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corner Buttons -->
+  <button class="corner-button" id="leftButton" onclick="alert('Planning for this to be a Help or Info button')">Help</button>
+  <button class="corner-button" id="rightButton" onclick="alert('This will be a Login page')">Login</button>
+  <button class="corner-button" id="signupButton" onclick="alert('Sign up form will be here')">Sign Up</button>
+
+  <!-- Floating Circle Icon -->
+  <div class="floating-icon" onclick="alert('Planning on having an AI chat thingy here, and yes, this is a bing icon')">
+    <img src="https://www.bing.com/th?id=OIP.zHQYJeT_WqJj5DdjvKluDwHaHa&pid=Api&rs=1" alt="Sign In">
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>TaskSync</h1>
+    <p>The smart digital planner that helps students conquer homework chaos.</p>
+  </header>
+
+  <!-- Container: Features -->
+  <div class="container">
+    <h2>Why TaskSync?</h2>
+    <p>TaskSync helps you take control of schoolwork chaos with powerful features that save time and reduce stress:</p>
+    <ul>
+      <li>📥 Sync assignments from email, Google Classroom, and Schoology</li>
+      <li>📸 Use your camera to turn notes or worksheets into digital tasks</li>
+      <li>🧠 Create the perfect schedule based on your daily habits</li>
+      <li>🔔 Get reminders before things are due (without nagging!)</li>
+      <li>💡 Stay focused with built-in productivity tools</li>
+    </ul>
+  </div>
+
+  <!-- Container: Pricing Plans -->
+  <div class="container">
+    <h2>Plans & Pricing</h2>
+    <div class="pricing-boxes">
+      <div class="pricing-card">
+        <h3>Freemium Model</h3>
+        <strong>Free + Premium</strong>
+        <p><strong>Price:</strong> Free download</p>
+        <p><strong>Premium:</strong> $4.99/month or $39.99/year</p>
+        <p><strong>Free Includes:</strong> Task entry, calendar, one platform sync</p>
+        <p><strong>Premium Includes:</strong> Full sync, OCR, AI, focus mode</p>
+        <p><strong>Why It Works:</strong> Attracts users then converts them when they see value</p>
+        <p><strong>Downside:</strong> Many may never upgrade</p>
+      </div>
+
+      <div class="pricing-card">
+        <h3>One-Time Purchase</h3>
+        <strong>$9.99–$14.99</strong>
+        <p><strong>Includes:</strong> All features unlocked forever</p>
+        <p><strong>Why It
