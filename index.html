@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,7 +23,7 @@
       margin: 40px auto;
       background-color: white;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 30px;
     }
 
@@ -52,13 +52,8 @@
       background-color: #0056b3;
     }
 
-    #leftButton {
-      left: 15px;
-    }
-
-    #rightButton {
-      right: 100px;
-    }
+    #leftButton { left: 15px; }
+    #rightButton { right: 100px; }
 
     #signupButton {
       right: 15px;
@@ -83,13 +78,13 @@
       border-radius: 12px;
       padding: 25px;
       width: 300px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       transition: transform 0.2s;
     }
 
     .pricing-card:hover {
       transform: scale(1.02);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
     .pricing-card h3 {
@@ -114,7 +109,7 @@
       color: #555;
     }
 
-    /* Floating Circle Icon */
+    /* Floating Chat Styles */
     .floating-icon {
       position: fixed;
       bottom: 30px;
@@ -141,6 +136,75 @@
       transform: scale(1.1);
       transition: 0.2s ease;
     }
+
+    #fastgpt-chatbot-window {
+      border: none;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: rgba(150, 150, 150, 0.2) 0px 10px 30px 0px, rgba(150, 150, 150, 0.2) 0px 0px 0px 1px;
+      width: 375px;
+      height: 667px;
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 0.75rem;
+      display: flex;
+      z-index: 2147483647;
+      overflow: hidden;
+      background-color: rgb(243, 244, 246);
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+    }
+
+    #closeChatBtn {
+      position: fixed;
+      bottom: 710px;
+      right: 30px;
+      background-color: #dc3545;
+      color: white;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 2147483648;
+    }
+
+    #reopenChatBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #0078d7;
+      color: white;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 2147483647;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    #reopenChatBtn:hover {
+      background-color: #0056b3;
+    }
+
+    /* GoFundMe Widget Styling */
+    .gfm-widget {
+      position: fixed;
+      z-index: 1000;
+    }
+
+    #gfm-right {
+      top: 100px;
+      right: 10px;
+    }
+
+    #gfm-bottom {
+      bottom: 100px;
+      left: 10px;
+    }
   </style>
 </head>
 <body>
@@ -148,12 +212,17 @@
   <!-- Corner Buttons -->
   <button class="corner-button" id="leftButton" onclick="alert('Planning for this to be a Help or Info button')">Help</button>
   <button class="corner-button" id="rightButton" onclick="alert('This will be a Login page')">Login</button>
-  <button class="corner-button" id="signupButton" onclick="alert('Sign up form will be here')">Sign Up</button>
+  <button class="corner-button" id="signupButton" onclick="window.location.href='https://tasksyncinc.neocities.org/SignUp';">Sign Up</button>
 
-  <!-- Floating Circle Icon -->
-  <div class="floating-icon" onclick="alert('Planning on having an AI chat thingy here, and yes, this is a bing icon')">
-    <img src="https://www.bing.com/th?id=OIP.zHQYJeT_WqJj5DdjvKluDwHaHa&pid=Api&rs=1" alt="Sign In">
-  </div>
+  <!-- AI Chat Elements -->
+  <iframe
+    id="fastgpt-chatbot-window"
+    title="AI Chat - Ask Your Question First"
+    src="https://app.wenwen-ai.com/chat/share?shareId=86miq0zf2xeu7yvg21qq169v">
+  </iframe>
+
+  <button id="closeChatBtn" onclick="toggleChat(false)">Close Chat</button>
+  <button id="reopenChatBtn" onclick="toggleChat(true)">💬 Chat with AI</button>
 
   <!-- Header -->
   <header>
@@ -161,7 +230,7 @@
     <p>The smart digital planner that helps students conquer homework chaos.</p>
   </header>
 
-  <!-- Container: Features -->
+  <!-- Features -->
   <div class="container">
     <h2>Why TaskSync?</h2>
     <p>TaskSync helps you take control of schoolwork chaos with powerful features that save time and reduce stress:</p>
@@ -174,23 +243,96 @@
     </ul>
   </div>
 
-  <!-- Container: Pricing Plans -->
+  <!-- Pricing -->
   <div class="container">
     <h2>Plans & Pricing</h2>
     <div class="pricing-boxes">
       <div class="pricing-card">
-        <h3>Freemium Model</h3>
-        <strong>Free + Premium</strong>
-        <p><strong>Price:</strong> Free download</p>
-        <p><strong>Premium:</strong> $4.99/month or $39.99/year</p>
-        <p><strong>Free Includes:</strong> Task entry, calendar, one platform sync</p>
-        <p><strong>Premium Includes:</strong> Full sync, OCR, AI, focus mode</p>
-        <p><strong>Why It Works:</strong> Attracts users then converts them when they see value</p>
-        <p><strong>Downside:</strong> Many may never upgrade</p>
+        <h3>Free Plan</h3>
+        <p>For those who want the basics.</p>
+        <ul>
+          <li>📅 Basic Task Entry</li>
+          <li>📅 Calendar View</li>
+          <li>🔒 Limited Syncing (One platform)</li>
+        </ul>
+        <strong>Price: Free</strong>
       </div>
-
       <div class="pricing-card">
-        <h3>One-Time Purchase</h3>
-        <strong>$9.99–$14.99</strong>
-        <p><strong>Includes:</strong> All features unlocked forever</p>
-        <p><strong>Why It
+        <h3>Premium Plan</h3>
+        <p>For serious planners who need advanced tools.</p>
+        <ul>
+          <li>🔄 Full Syncing</li>
+          <li>📸 OCR Task Recognition</li>
+          <li>🧠 AI Scheduling Assistance</li>
+          <li>🎯 Focus Mode</li>
+          <li>📊 Progress Tracking</li>
+        </ul>
+        <strong>Price: $4.99/month or $39.99/year</strong>
+      </div>
+      <div class="pricing-card">
+        <h3>Lifetime Plan</h3>
+        <p>One-time payment for full access forever.</p>
+        <ul>
+          <li>🔄 Full Access (All Features)</li>
+          <li>📸 OCR, AI, Syncing, and More!</li>
+        </ul>
+        <strong>Price: $500–$750</strong>
+      </div>
+      <div class="pricing-card">
+        <h3>Subscription Plan</h3>
+        <p>Full access with regular updates.</p>
+        <ul>
+          <li>🔄 Full Access</li>
+          <li>🔄 Regular Updates</li>
+          <li>📈 New Features (e.g., AI Integrations)</li>
+        </ul>
+        <strong>Price: $2.99–$5.99/month or $24.99–$49.99/year</strong>
+      </div>
+    </div>
+    <p><em>Student Discount: Get 35% off with your .edu email!</em></p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="container faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+      <li><strong>Q: How does TaskSync work?</strong> TaskSync integrates your school platforms and schedules all your tasks in one place.</li>
+      <li><strong>Q: Do I need to install anything?</strong> TaskSync works directly through the web, so no downloads are required!</li>
+      <li><strong>Q: What if I forget to do my homework?</strong> TaskSync will send reminders so that you stay on track!</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 TaskSync. All rights reserved.
+  </footer>
+
+  <!-- GFM Widgets: Right and Bottom Only -->
+  <div id="gfm-right" class="gfm-widget">
+    <div class="gfm-embed" data-url="https://www.gofundme.com/f/support-tasksync-a-students-study-solution/widget/medium?sharesheet=manage hero&attribution_id=sl:e519e0aa-b9c0-43c2-9a55-5625d917be7f"></div>
+  </div>
+
+  <div id="gfm-bottom" class="gfm-widget">
+    <div class="gfm-embed" data-url="https://www.gofundme.com/f/support-tasksync-a-students-study-solution/widget/medium?sharesheet=manage hero&attribution_id=sl:e519e0aa-b9c0-43c2-9a55-5625d917be7f"></div>
+  </div>
+
+  <script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+
+  <!-- Script for Toggle -->
+  <script>
+    function toggleChat(show) {
+      const chat = document.getElementById('fastgpt-chatbot-window');
+      const closeBtn = document.getElementById('closeChatBtn');
+      const reopenBtn = document.getElementById('reopenChatBtn');
+      if (show) {
+        chat.style.display = 'flex';
+        closeBtn.style.display = 'block';
+        reopenBtn.style.display = 'none';
+      } else {
+        chat.style.display = 'none';
+        closeBtn.style.display = 'none';
+        reopenBtn.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
